@@ -1,9 +1,9 @@
 const moongose = require("mongoose");
-const dbAPI =
-   "mongodb+srv://irshadsheikh2005:Irshad2005@tinder.chzul.mongodb.net/devTinder";
 const connectDb = async () => {
    try {
-      const connectionInstance = await moongose.connect(dbAPI);
+      const connectionInstance = await moongose.connect(
+         process.env.Mongo_DB_URI + process.env.DB_Name
+      );
       console.log(
          `MONGODB connection successfully Host : ${connectionInstance.connection.host}`,
       );

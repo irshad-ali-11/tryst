@@ -9,7 +9,7 @@ const userAuth = async (req, res, next) => {
             message: "Invalid creaditials",
          });
       }
-      const decode = jwt.verify(token, "Irshad");
+      const decode = jwt.verify(token, process.env.JWT_Secret);
       const user = await User.findById({ _id: decode._id });
       if (!user) {
          return res.status(404).json({

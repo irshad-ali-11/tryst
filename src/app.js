@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const { connectDb } = require("./config/database.js");
 const cookieParser = require("cookie-parser");
@@ -9,12 +10,12 @@ const { userRouter } = require("./routers/user");
 const cors = require("cors");
 app.use(
    cors({
-      origin: "http://localhost:5173/",
+      origin: process.env.Origin,
       credentials: true,
    }),
 );
 app.use(express.json());
-app.use(cookieParser("Irshad"));
+app.use(cookieParser(process.env.Cookie_Parser_Secret));
 app.use("/api/v1/", authRouter);
 app.use("/api/v1/", profileRouter);
 app.use("/api/v1/", requestRouter);
@@ -22,7 +23,7 @@ app.use("/api/v1/", userRouter);
 connectDb()
    .then(() => {
       app.listen(3000, () => {
-         console.log("Server Start... 3000");
+         console.log("Server Start at 3000");
       });
    })
    .catch(() => {

@@ -47,8 +47,8 @@ userRouter.get("/user/connection", userAuth, async (req, res) => {
          }
          return row.toUserId;
       });
-      console.log("connection BE - ");
-      console.log(data);
+      //console.log("connection BE - ");
+      //console.log(data);
 
       res.status(200).json({
          message: "fetch a connections successfully!!!",
