@@ -22,8 +22,8 @@ app.use("/api/v1/", requestRouter);
 app.use("/api/v1/", userRouter);
 connectDb()
    .then(() => {
-      app.listen(3000, () => {
-         console.log("Server Start at 3000");
+      app.listen(process.env.PORT || 8080, () => {
+         console.log(`Server Start at ${process.env.PORT}`);
       });
    })
    .catch(() => {
