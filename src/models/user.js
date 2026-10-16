@@ -41,11 +41,6 @@ const userSchema = Schema(
       },
       photoUrl: {
          type: String,
-         validate(value) {
-            if (!validator.isURL(value)) {
-               throw new Error("Invalid url..");
-            }
-         },
       },
       age: {
          type: Number,
@@ -78,7 +73,7 @@ const userSchema = Schema(
 userSchema.methods.getJWT = function () {
    const token = jwt.sign(
       { _id: this._id },
-      "Irshad",
+      process.env.JWT_Secret,
       {
          expiresIn: "1d",
       },

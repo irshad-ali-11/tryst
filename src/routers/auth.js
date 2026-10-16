@@ -20,6 +20,7 @@ authRouter.post("/singup", async (req, res) => {
          throw new Error("allready existes email address");
       }
       const passwordHash = await bcrypt.hash(password, 10);
+      console.log("here");
       const user = new User({
          firstName,
          lastName,
@@ -73,10 +74,9 @@ authRouter.post("/logout", (req, res) => {
    });
 });
 
-authRouter.get("/healt",(req,res)=>
-{
+authRouter.get("/healt", (req, res) => {
    res.status(200).json({
-      message:"Route is healty"
+      message: "Route is healty",
    });
 });
 

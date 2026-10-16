@@ -17,7 +17,6 @@ const validateProfileEdit = (req) => {
       "skills",
       "about",
       "age",
-      "photoUrl",
    ];
    const isALlow = Object.keys(req.body).every((k) => AllowUpdated.includes(k));
    if (!isALlow) {

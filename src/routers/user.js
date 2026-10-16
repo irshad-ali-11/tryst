@@ -41,14 +41,15 @@ userRouter.get("/user/connection", userAuth, async (req, res) => {
          .populate("fromUserId", USER_SAFE_DATA)
          .populate("toUserId", USER_SAFE_DATA);
 
+      //console.log(connections);
       const data = connections.map((row) => {
-         if (row.fromUserId.toString() === loggedInUser._id.toString()) {
-            return row.fromUserId;
+         if (row.fromUserId._id.toString() === loggedInUser._id.toString()) {
+            return row.toUserId;
          }
-         return row.toUserId;
+         return row.fromUserId;
       });
-      //console.log("connection BE - ");
-      //console.log(data);
+      // console.log("connection BE - ");
+      // console.log(data);
 
       res.status(200).json({
          message: "fetch a connections successfully!!!",
